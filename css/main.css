@@ -1,0 +1,22 @@
+.form-module {
+  margin-bottom: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 15px; }
+
+.form-header {
+  border-bottom: 2px solid #000; }
+
+#submitter-module {
+  display: none; }
+
+#instruction {
+  color: #C83C3C; }
+
+#formSubmitBtn {
+  margin-bottom: 20px; }
+
+#container-suc {
+  border: 10px solid #000; }
+
+/*# sourceMappingURL=main.css.map */
