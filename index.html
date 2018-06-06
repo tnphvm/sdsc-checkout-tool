@@ -47,15 +47,6 @@
                </div>
              </div>
             </div>
-           <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="inputEmail">Email</label>
-                <input type="email" class="form-control" id="inputEmail" required>
-                <div class="invalid-feedback">
-                  Please enter your email.
-                </div>
-              </div>
-            </div>
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="inputAD">AD Username</label>
@@ -74,6 +65,13 @@
             </div>
             <div class="form-row">
               <div class="form-group col-md-6">
+                  <label for="inputEmail">Email</label>
+                  <input type="email" class="form-control" id="inputEmail" required>
+                  <div class="invalid-feedback">
+                    Please enter your email.
+                  </div>
+              </div>
+              <div class="form-group col-md-6">
                  <label for="inputCheckOutDate">Checkout Date</label>
                  <input type="date" class="form-control" id="inputCheckOutDate" required>
                  <div class="invalid-feedback">
@@ -85,23 +83,128 @@
                  </div>
               </div>
             </div>
+            <div class="form-row">
+              <div class="form-group col-md-2">
+                <label for="inputTransfer">UCSD Department Transfer</label>
+              </div>
+              <div class="form-group col-md-2">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="inputTransfer" id="transferYes" value="option1" required>
+                  <label class="form-check-label" for="transferYes">
+                    Yes
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="inputTransfer" id="transferNo" value="option2">
+                  <label class="form-check-label" for="transferNo">
+                    No
+                  </label>
+                </div>
+              </div>
+            </div>
       </div>
 
        <div class="form-module" id="account-options-module">
           <h2 class="form-header">Account Options</h2>
           <div class="form-row">
-             <div class="form-group col-md-6">
-                <label for="inputAccountType">Keep HPC Account Open?</label>
-                <select id="inputAccountType" class="form-control" required>
-                    <option value="">Select an account type</option>
-                    <option value="New UCSD Staff">New UCSD Staff</option>
-                    <option value="Existing UCSD Staff">Existing UCSD Staff Account</option>
-                    <option value="Non-UCSD Sponsered Account">Non-UCSD Sponsored Account</option>
-                </select>
-                <div class="invalid-feedback">
-                  Please choose a staff/employee type.
+             <div class="form-group col-md-2">
+                <label class="control-label" for="inputKeepAd">Keep AD Account?</label>
+              </div>
+              <div class="form-group col-md-2">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="inputKeepAd" id="adAccYes" value="option1" required>
+                  <label class="form-check-label" for="adAccYes">
+                    Yes
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="inputKeepAd" id="adAccNo" value="option2">
+                  <label class="form-check-label" for="adAccNo">
+                    No
+                  </label>
                 </div>
              </div>
+              <div class="form-group col-md-4">
+                <label for="inputAdDate">If yes, until when: </label>
+                <input type="date" class="form-control" id="inputAdDate" required>
+              </div>
+              <div class="form-group col-md-4">
+                <label for="inputAdIndex">If yes, index: </label>
+                <input type="text" class="form-control" id="inputAdIndex" required>
+              </div>
+          </div>
+          <div class="form-row">
+             <div class="form-group col-md-2">
+                <label class="control-label" for="inputKeepAd">Keep UNIX Account?</label>
+              </div>
+              <div class="form-group col-md-2">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="inputKeepUnix" id="unixYes" value="option1" required>
+                  <label class="form-check-label" for="unixYes">
+                    Yes
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="inputKeepUnix" id="unixNo" value="option2">
+                  <label class="form-check-label" for="unixNo">
+                    No
+                  </label>
+                </div>
+             </div>
+              <div class="form-group col-md-4">
+                <label for="inputUnixDate">If yes, until when: </label>
+                <input type="date" class="form-control" id="inputUnixDate" required>
+              </div>
+              <div class="form-group col-md-4">
+                <label for="inputUnixIndex">If yes, index: </label>
+                <input type="text" class="form-control" id="inputUnixIndex" required>
+              </div>
+          </div>
+          <div class="form-row">
+             <div class="form-group col-md-2">
+                <label class="control-label" for="inputForwardEmail">Forward SDSC Email Address?</label>
+              </div>
+              <div class="form-group col-md-2">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="inputForwardEmail" id="forwardYes" value="option1" required>
+                  <label class="form-check-label" for="forwardYes">
+                    Yes
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="inputForwardEmail" id="forwardNo" value="option2">
+                  <label class="form-check-label" for="forwardNo">
+                    No
+                  </label>
+                </div>
+             </div>
+              <div class="form-group col-md-8">
+                <label for="inputForwardDest">If yes, to where: </label>
+                <input type="email" class="form-control" id="inputForwardDest" required>
+              </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-2">
+              <label for="inputVault">I’m also pondering something to the effect of SC-Vault Data Transfer</label>
+            </div>
+            <div class="form-group col-md-2">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="inputVault" id="vaultYes" value="option1" required>
+                <label class="form-check-label" for="vaultYes">
+                  Yes
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="inputVault" id="vaultNo" value="option2">
+                <label class="form-check-label" for="vaultNo">
+                  No
+                </label>
+              </div>
+            </div>
+            <div class="form-group col-md-8">
+              <label for="inputVaultPerson">If yes, to whom: </label>
+              <input type="text" class="form-control" id="inputVaultPerson" required>
+            </div>
           </div>
       </div>
 
