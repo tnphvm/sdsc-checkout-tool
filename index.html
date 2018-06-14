@@ -41,7 +41,7 @@
              </div>
              <div class="form-group col-md-6">
                <label for="inputFirstName">First Name</label>
-               <input type="number" class="form-control" id="inputFirstName" required>
+               <input type="text" class="form-control" id="inputFirstName" required>
                <div class="invalid-feedback">
                   Please enter your first name.
                </div>
@@ -57,10 +57,7 @@
               </div>
               <div class="form-group col-md-6">
                 <label for="inputPid">PID (Optional)</label>
-                <input type="text" class="form-control" id="inputPid" required>
-                <div class="invalid-feedback">
-                  Please enter your PID.
-                </div>
+                <input type="text" class="form-control" id="inputPid">
               </div>
             </div>
             <div class="form-row">
@@ -77,10 +74,6 @@
                  <div class="invalid-feedback">
                     Please choose an end date.
                  </div>
-                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="infiniteCheckOutDate" >
-                    <label class="form-check-label" for="infiniteCheckOutDate">Unsure/Indefinite</label>
-                 </div>
               </div>
             </div>
             <div class="form-row">
@@ -89,13 +82,13 @@
               </div>
               <div class="form-group col-md-2">
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="inputTransfer" id="transferYes" value="option1" required>
+                  <input class="form-check-input" type="radio" name="inputTransfer" id="transferYes" value="Yes" required>
                   <label class="form-check-label" for="transferYes">
                     Yes
                   </label>
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="inputTransfer" id="transferNo" value="option2">
+                  <input class="form-check-input" type="radio" name="inputTransfer" id="transferNo" value="No">
                   <label class="form-check-label" for="transferNo">
                     No
                   </label>
@@ -112,25 +105,31 @@
               </div>
               <div class="form-group col-md-2">
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="inputKeepAd" id="adAccYes" value="option1" required>
-                  <label class="form-check-label" for="adAccYes">
+                  <input class="form-check-input" type="radio" name="inputKeepAd" id="adYes" value="Yes" required>
+                  <label class="form-check-label" for="adYes">
                     Yes
                   </label>
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="inputKeepAd" id="adAccNo" value="option2">
-                  <label class="form-check-label" for="adAccNo">
+                  <input class="form-check-input" type="radio" name="inputKeepAd" id="adNo" value="No">
+                  <label class="form-check-label" for="adNo">
                     No
                   </label>
                 </div>
              </div>
               <div class="form-group col-md-4">
                 <label for="inputAdDate">If yes, until when: </label>
-                <input type="date" class="form-control" id="inputAdDate" required>
+                <input type="date" class="form-control" id="inputAdDate">
+                <div class="invalid-feedback">
+                  Please enter an end date for the AD account.
+                </div>
               </div>
               <div class="form-group col-md-4">
                 <label for="inputAdIndex">If yes, index: </label>
-                <input type="text" class="form-control" id="inputAdIndex" required>
+                <input type="text" class="form-control" id="inputAdIndex">
+                <div class="invalid-feedback">
+                  Please enter the index for the AD account.
+                </div>
               </div>
           </div>
           <div class="form-row">
@@ -139,13 +138,13 @@
               </div>
               <div class="form-group col-md-2">
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="inputKeepUnix" id="unixYes" value="option1" required>
+                  <input class="form-check-input" type="radio" name="inputKeepUnix" id="unixYes" value="Yes" required>
                   <label class="form-check-label" for="unixYes">
                     Yes
                   </label>
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="inputKeepUnix" id="unixNo" value="option2">
+                  <input class="form-check-input" type="radio" name="inputKeepUnix" id="unixNo" value="No">
                   <label class="form-check-label" for="unixNo">
                     No
                   </label>
@@ -153,11 +152,17 @@
              </div>
               <div class="form-group col-md-4">
                 <label for="inputUnixDate">If yes, until when: </label>
-                <input type="date" class="form-control" id="inputUnixDate" required>
+                <input type="date" class="form-control" id="inputUnixDate">
+                <div class="invalid-feedback">
+                  Please choose an end date for the UNIX account.
+                </div>
               </div>
               <div class="form-group col-md-4">
                 <label for="inputUnixIndex">If yes, index: </label>
-                <input type="text" class="form-control" id="inputUnixIndex" required>
+                <input type="text" class="form-control" id="inputUnixIndex">
+                <div class="invalid-feedback">
+                  Please enter the index for the UNIX account.
+                </div>
               </div>
           </div>
           <div class="form-row">
@@ -166,13 +171,13 @@
               </div>
               <div class="form-group col-md-2">
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="inputForwardEmail" id="forwardYes" value="option1" required>
+                  <input class="form-check-input" type="radio" name="inputForwardEmail" id="forwardYes" value="Yes" required>
                   <label class="form-check-label" for="forwardYes">
                     Yes
                   </label>
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="inputForwardEmail" id="forwardNo" value="option2">
+                  <input class="form-check-input" type="radio" name="inputForwardEmail" id="forwardNo" value="No">
                   <label class="form-check-label" for="forwardNo">
                     No
                   </label>
@@ -180,46 +185,56 @@
              </div>
               <div class="form-group col-md-8">
                 <label for="inputForwardDest">If yes, to where: </label>
-                <input type="email" class="form-control" id="inputForwardDest" required>
+                <input type="email" class="form-control" id="inputForwardDest">
+                <div class="invalid-feedback">
+                  Please enter the email of whom you would like to forward to.
+                </div>
               </div>
           </div>
           <div class="form-row">
-            <div class="form-group col-md-4">
-              <label for="inputVault">I’m also pondering something to the effect of SC-Vault Data Transfer</label>
+            <div class="form-group col-md-2">
+              <label for="inputVault">Transfer data out of SC-Vault?</label>
             </div>
             <div class="form-group col-md-2">
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="inputVault" id="vaultYes" value="option1" required>
+                <input class="form-check-input" type="radio" name="inputVault" id="vaultYes" value="Yes" required>
                 <label class="form-check-label" for="vaultYes">
                   Yes
                 </label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="inputVault" id="vaultNo" value="option2">
+                <input class="form-check-input" type="radio" name="inputVault" id="vaultNo" value="No">
                 <label class="form-check-label" for="vaultNo">
                   No
                 </label>
               </div>
             </div>
+            <div class="form-group col-md-8">
+              <label for="inputVaultdDest">If yes, to where: </label>
+              <input type="text" class="form-control" id="inputVaultDest">
+              <div class="invalid-feedback">
+                Please enter the destination of whom you would like to transfer your data to or if unsure, enter "I don't know".
+              </div>
+            </div>
           </div>
 
-          If yes, to whom: 
+<!--           If yes, to whom: 
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="inputVaultLastName">Last Name</label>
-              <input type="text" class="form-control" id="inputVaultLastName" required>
+              <input type="text" class="form-control" id="inputVaultLastName">
             </div>
             <div class="form-group col-md-6">
               <label for="inputVaulFirstName">First Name</label>
-              <input type="text" class="form-control" id="inputVaultFirsttName" required>
+              <input type="text" class="form-control" id="inputVaultFirsttName">
             </div>
           </div>
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="inputVaultLastName">AD Username</label>
-              <input type="text" class="form-control" id="inputVaultAd" required>
+              <input type="text" class="form-control" id="inputVaultAd">
             </div>
-          </div>
+          </div> -->
       </div>
 
       <button type="submit" class="btn btn-primary btn-lg btn-block" id="formSubmitBtn">Submit Request</button>

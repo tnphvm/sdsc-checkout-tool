@@ -13,7 +13,7 @@ $('#formRequest').submit(function(event) {
 
       if (form.checkValidity() === false) {
          // console.log("Bad input");
-         alert("Invalid input(s). Please double check marked value(s).");
+         alert("Invalid input(s). Please double check marked field(s).");
          allValid = false;
          event.preventDefault();
          event.stopPropagation();
@@ -35,67 +35,57 @@ $('#formRequest').submit(function(event) {
 });
 
 
-/* Event listener to apply validation attributes when there is not at least
-*  one checkbox for account types is not selected.
+/* The following are event listeners for the radio buttons pertaining to Account Options.
+*  When the user have selected, "Yes," for any of the option below Account Options,
+*  its respective input field will be marked as required for the user to fill out. 
 */
-$('[name="gridRadios"]').click(function() {
-   let accountTypes = document.getElementsByName("gridRadios");
-   let atLeastOne = false;
+$('[name="inputVault"]').click(function() {
+   let $vaultInput = $("#inputVaultDest");
 
-   let checkForOne = Array.prototype.filter.call(accountTypes, function(box) {
-      if (box.checked )
-         atLeastOne = true;
-   });
-
-   let applyAttr = Array.prototype.filter.call(accountTypes, function(box) {
-      if (atLeastOne)
-         box.removeAttribute("required");
-      else
-         box.setAttribute("required", "true");
-   });
+   if ($("#vaultYes").prop("checked"))
+      $vaultInput.attr("required", "");
+   else
+      $vaultInput.removeAttr("required");
 });
 
 
-/* Event listener to toggle the view of the submitter module.
-*/
-$('#submitterInfo').click(function() {
-   $('#submitter-module').slideToggle();
+$('[name="inputForwardEmail"]').click(function() {
+   let $forwardInput = $("#inputForwardDest");
+
+   if ($("#forwardYes").prop("checked"))
+      $forwardInput.attr("required", "");
+   else
+      $forwardInput.removeAttr("required");
 });
 
 
-/* Event listener for when sponser info is different from submitter info;
-*  Event will toggle submitter inputs to be required and fillable when shown.
-*  Otherwise, submitter module is hidden and inputs are disabled.
-*/
-$('#submitterInfo').click(function() {
-   $('#inputSubmitterName').prop('disabled', function(i, v) { return !v; });
-   $('#inputSubmitterName').prop('required', function(i, v) { return !v; });
+$('[name="inputKeepUnix"]').click(function() {
+   let $unixDate = $("#inputUnixDate");
+   let $unixIndex = $('#inputUnixIndex');
 
-   $('#inputSubmitterEmail').prop('disabled', function(i, v) { return !v; });
-   $('#inputSubmitterEmail').prop('required', function(i, v) { return !v; });
-
-
-   $('#inputSubmitterPhone').prop('disabled', function(i, v) { return !v; });
-   $('#inputSubmitterPhone').prop('required', function(i, v) { return !v; });
-});
-
-
-/* Event listener for when user checks "Unsure/Indefinite" for account end date.
-*  When checked, form will fill in a date long into the future with the year '9999'.
-*  Otherwise, user can choose the account end date.
-*/
-$('#infiniteEndDate').click(function() {
-   let $endDateInput = $("#inputEndDate");
-
-   if ($('#infiniteEndDate').prop('checked')) {
-      $endDateInput.val("9999-01-01");
-      $endDateInput.attr("disabled", "");
+   if ($("#unixYes").prop("checked")) {
+      $unixDate.attr("required", "");
+      $unixIndex.attr("required", "");
    }
    else {
-      $endDateInput.val("");
-      $endDateInput.removeAttr("disabled");
+      $unixDate.removeAttr("required");
+      $unixIndex.removeAttr("required");
    }
-      
+});
+
+
+$('[name="inputKeepAd"]').click(function() {
+   let $adDate = $("#inputAdDate");
+   let $adIndex = $('#inputAdIndex');
+
+   if ($("#adYes").prop("checked")) {
+      $adDate.attr("required", "");
+      $adIndex.attr("required", "");
+   }
+   else {
+      $adDate.removeAttr("required");
+      $adIndex.removeAttr("required");
+   }
 });
 
 
@@ -104,59 +94,55 @@ $('#infiniteEndDate').click(function() {
 */
 function retrieveData() {
    'use strict';
-   // TODO: Before appending everything, remember to attach a "brief description" for the ticket
-   // e.g. "SDSC ITSS Account Request". Double check with Ryan for specific desc.
 
-   let $input = $('.form-control:visible');
-   let $label = $('label:visible').not(".form-check-label");
+   let $input = $(".form-control:visible");
+   let $label = $("label:visible").not(".form-check-label");
+   let $radioButtons = $(".form-check-input:checked");
    let dataBody = "";
 
-   if ($input.length != $label.length) {
+   if (($input.length + $radioButtons.length) != $label.length) {
       console.log("Lengths are different.");
       return;
    }
 
+   // Submission guarantees all 5 radio buttons to be checked and in the order
+   // it's shown on the form
+   let transferAns = $radioButtons[0].value;
+   let adAccAns = $radioButtons[1].value;
+   let unixAns = $radioButtons[2].value;
+   let forwardEmailAns = $radioButtons[3].value;
+   let vaultAns = $radioButtons[4].value;
+
    // Retrieve all input values
-   for (let i = 0; i < $input.length; i++) {
-      let inputVal = $input[i].value;
-      if (!inputVal)
-         inputVal = "N/A";
+   let lastInputCounter = 0;
+
+   for (let i = 0; i < $label.length; i++) {
+      let inputVal;
+
+      if ($label[i].getAttribute("for") == "inputTransfer")
+         inputVal = transferAns;
+      else if ($label[i].getAttribute("for") == "inputKeepAd")
+         inputVal = adAccAns;
+      else if ($label[i].getAttribute("for") == "inputKeepUnix")
+         inputVal = unixAns;
+      else if ($label[i].getAttribute("for") == "inputForwardEmail")
+         inputVal = forwardEmailAns;
+      else if ($label[i].getAttribute("for") == "inputVault")
+         inputVal = vaultAns;
+      else {
+         inputVal = $input[lastInputCounter].value;
+         ++lastInputCounter;
+      
+         if (!inputVal)
+            inputVal = "N/A";
+      }
 
       let inputLine = $label[i].textContent + ": " + inputVal;
       dataBody += inputLine;
 
-      if (i != ($input.length - 1))
+      if (i != ($label.length - 1))
          dataBody += "\n";
    }
 
-   // Retrieve checkboxes' info
-   // Check account type(s)
-   let accountTypes = document.getElementsByName("gridRadios");
-   let accountStr = "Account Type: ";
-
-   for (let i = 0; i < accountTypes.length; i++) {
-      if (accountTypes[i].checked) {
-         accountStr += accountTypes[i].value;
-
-         if (i < (accountTypes.length - 2))
-            accountStr += ", ";
-      }
-   }
-
-   // Check student type
-   let studentStr = "Is this an undergraduate, student, or intern? ";
-   if (document.getElementById('isStudent').checked)
-      studentStr += "Yes";
-   else
-      studentStr += "No";
-
-   // Check if exchange account needed
-   let exchangeStr = "UCSD Exchange Account Needed? ";
-   if (document.getElementById('isExchange').checked)
-      exchangeStr += "Yes";
-   else
-      exchangeStr += "No";
-
-   dataBody += accountStr + "\n" + studentStr + "\n" + exchangeStr;
    console.log(dataBody);
 }
