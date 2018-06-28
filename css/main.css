@@ -10,13 +10,18 @@
 #submitter-module {
   display: none; }
 
+.form-title {
+  margin: 20px; }
+
+#title {
+  text-align: center; }
+
 #instruction {
-  color: #C83C3C; }
+  color: #C83C3C;
+  text-align: center; }
 
 #formSubmitBtn {
-  margin-bottom: 20px; }
-
-#container-suc {
-  border: 10px solid #000; }
+  margin-bottom: 20px;
+  background-color: #5990cc; }
 
 /*# sourceMappingURL=main.css.map */

@@ -19,14 +19,20 @@
    display: none;
 }
 
+.form-title {
+   margin: 20px;
+}
+
+#title {
+   text-align: center;
+}
+
 #instruction {
    color: #C83C3C;
+   text-align: center;
 }
 
 #formSubmitBtn {
    margin-bottom: 20px;
-}
-
-#container-suc {
-   @include solidBorder(10px);
+   background-color: #5990cc;
 }
